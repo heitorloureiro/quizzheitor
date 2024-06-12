@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMenager : MonoBehaviour
 {
@@ -37,4 +38,9 @@ public class GameMenager : MonoBehaviour
         StartCoroutine(GerarAlan());
     }
 
+    public void GameOver()
+    {
+        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);
+    }
 }

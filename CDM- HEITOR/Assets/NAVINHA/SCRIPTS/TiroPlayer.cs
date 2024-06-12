@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class TiroPlayer : MonoBehaviour
@@ -10,9 +9,8 @@ public class TiroPlayer : MonoBehaviour
     public BoxCollider2D colisorTiro;
 
     [Header("Movimentação")]
-        public float velocidade;
+    public float velocidade;
 
-        
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +22,7 @@ public class TiroPlayer : MonoBehaviour
     {
         
     }
+
     private void FixedUpdate()
     {
         corpoTiro.velocity = new Vector2(0, velocidade);
@@ -34,10 +33,12 @@ public class TiroPlayer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Alan"))
         {
+            GameManager.instancia.AlterarScore(10);
+            Player.instancia.alansAtivos.Remove(collision.gameObject.GetComponent<Alan>());
+            collision.gameObject.GetComponent<Alan>().DroparItem();
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }
 
-} 
-
+}
